@@ -19,6 +19,12 @@ session_start();
 $dbh = null;
 require_once "database.php";
 
+if(isset($_GET['ARMAGEDDON'])) {
+    query('truncate table minigame.nodes');
+    query('insert into minigame.nodes values(1,"Hat das Tier vier Beine?",2,3),(2,"Elefant",null,null),(3,"Mücke",null,null)');
+    header('Location: ?');
+}
+
 /**
  * GAME MODES:
  *      question: - user still travels along the question nodes down the B-Tree
@@ -48,6 +54,12 @@ if (!isset($_SESSION['mode'])) {
     $_SESSION['human'] = 0;
 }
 
+
+    if ($_SESSION['computer'] >= $_SESSION['human']){
+        echo "Es steht " . $_SESSION['computer'] . ':' . $_SESSION['human'] . ' für mich, den Computer!<hr>';
+    } else {
+        echo "Es steht " . $_SESSION['human'] . ':' . $_SESSION['computer'] . ' für dich, den Menschen!<hr>';
+    }
 
 //print_r($_SESSION);
 
