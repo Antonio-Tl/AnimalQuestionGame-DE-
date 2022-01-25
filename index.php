@@ -1,4 +1,5 @@
 <?php
+session_start();
 $dbh = null;
 require_once "database.php";
 
